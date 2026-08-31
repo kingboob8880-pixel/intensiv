@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>50 вопросов по Акыде - Полная проверка убеждений</title>
+    <title>50 вопросов по Акыде - Полная проверка</title>
     <style>
         :root {
             --primary: #1b4332;
@@ -14,361 +14,141 @@
             --text: #212529;
             --text-light: #6c757d;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        header h1 {
-            color: var(--primary);
-            margin: 0;
-            font-size: 2em;
-        }
-
-        header p {
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 10px;
-        }
-
-        .question-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .question-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .question-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-            border-left-color: var(--accent);
-        }
-
-        .question-card h3 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.1em;
-        }
-
-        .question-card p {
-            color: var(--text-light);
-            font-size: 0.9em;
-            margin-bottom: 0;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            margin-bottom: 10px;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            border-top: 5px solid var(--accent);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-btn:hover {
-            color: var(--primary);
-        }
-
-        .modal-content h2 {
-            color: var(--primary);
-            margin-top: 0;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        .answer-section {
-            margin-top: 20px;
-        }
-
-        .answer-section h4 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        .correct-answer {
-            background-color: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .deviation-answer {
-            background-color: #f8d7da;
-            border-left: 4px solid #dc3545;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: var(--text-light);
-            font-size: 0.9em;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px; border-bottom: 2px solid var(--accent); }
+        header h1 { color: var(--primary); margin: 0; font-size: 2em; }
+        header p { color: var(--text-light); font-style: italic; margin-top: 10px; }
+        .question-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .question-card { background: var(--card-bg); border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--secondary); cursor: pointer; transition: all 0.3s ease; }
+        .question-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-left-color: var(--accent); }
+        .question-card h3 { color: var(--primary); margin-top: 0; font-size: 1.1em; }
+        .question-card p { color: var(--text-light); font-size: 0.9em; margin-bottom: 0; }
+        .badge { display: inline-block; background: var(--secondary); color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.75em; margin-bottom: 10px; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 15px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; border-top: 5px solid var(--accent); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; color: var(--text-light); cursor: pointer; transition: color 0.2s; }
+        .close-btn:hover { color: var(--primary); }
+        .modal-content h2 { color: var(--primary); margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.3em; }
+        .answer-section { margin-top: 20px; }
+        .answer-section h4 { color: var(--secondary); margin-bottom: 10px; }
+        .correct-answer { background-color: #d4edda; border-left: 4px solid #28a745; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .deviation-answer { background-color: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; border-radius: 5px; }
+        footer { text-align: center; margin-top: 40px; color: var(--text-light); font-size: 0.9em; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>50 фундаментальных вопросов по Акыде</h1>
-        <p>«Основа религии — чистое убеждение. Проверяй не только слова, но и суть».</p>
+        <h1>50 Фундаментальных вопросов Акыды</h1>
+        <p>«Тот, чья акыда чиста, тот спасен. Проверяй основы, прежде чем строить стены».</p>
     </header>
-
-    <div class="question-grid">
-        <div class="question-card" onclick="openModal('modal1')"><span class="badge">Таухид аль-Асма ва-Сыфат</span><h3>1. Атрибуты Аллаха и принцип «Била кайф»</h3><p>Как мы понимаем атрибуты Аллаха и чем наш подход отличается от других?</p></div>
-        <div class="question-card" onclick="openModal('modal2')"><span class="badge">Иман</span><h3>2. Определение Имана и его изменения</h3><p>Из чего состоит Иман? Увеличивается ли он и уменьшается?</p></div>
-        <div class="question-card" onclick="openModal('modal3')"><span class="badge">Такфир</span><h3>3. Методология Такфира</h3><p>Можно ли объявлять мусульманина неверующим за грех?</p></div>
-        <div class="question-card" onclick="openModal('modal4')"><span class="badge">Таухид аль-Улюхийя</span><h3>4. Тауассуль и обращение к мертвым</h3><p>Какие виды Тауассуля разрешены, а какие — ширк?</p></div>
-        <div class="question-card" onclick="openModal('modal5')"><span class="badge">Коран</span><h3>5. Речь Аллаха: сотворенность Корана</h3><p>Является ли Коран речью Аллаха? Сотворен ли он?</p></div>
-        <div class="question-card" onclick="openModal('modal6')"><span class="badge">Судный день</span><h3>6. Видение Аллаха (Ар-Руья)</h3><p>Будут ли верующие видеть Аллаха в Судный День?</p></div>
-        <div class="question-card" onclick="openModal('modal7')"><span class="badge">Таухид аль-Рубубийя</span><h3>7. Единственность Аллаха в Господстве</h3><p>Что означает Таухид аль-Рубубийя и достаточно ли его для входа в Рай?</p></div>
-        <div class="question-card" onclick="openModal('modal8')"><span class="badge">Ширк</span><h3>8. Виды ширка: большой и малый</h3><p>В чем разница между большим и малым ширком? Приведите примеры.</p></div>
-        <div class="question-card" onclick="openModal('modal9')"><span class="badge">Кадар</span><h3>9. Предопределение (Кадар) и свобода воли</h3><p>Как совместить предопределение Аллаха со свободой воли человека?</p></div>
-        <div class="question-card" onclick="openModal('modal10')"><span class="badge">Пророчество</span><h3>10. Чудеса пророков и караматы праведников</h3><p>В чем разница между чудом пророка (му'джиза) и караматом праведника?</p></div>
-        <div class="question-card" onclick="openModal('modal11')"><span class="badge">Сподвижники</span><h3>11. Отношение к сподвижникам Пророка ﷺ</h3><p>Каково наше отношение к сподвижникам и в чем ошибка шиитов?</p></div>
-        <div class="question-card" onclick="openModal('modal12')"><span class="badge">Бид'а</span><h3>12. Нововведения (Бид'а) в религии</h3><p>Что такое бид'а и почему она опаснее греха?</p></div>
-        <div class="question-card" onclick="openModal('modal13')"><span class="badge">Загробная жизнь</span><h3>13. Мучения могилы и блаженство в ней</h3><p>Верим ли мы в мучения могилы? Как это доказывают Коран и Сунна?</p></div>
-        <div class="question-card" onclick="openModal('modal14')"><span class="badge">Шафа'а</span><h3>14. Заступничество (Шафа'а) в Судный День</h3><p>Какие виды заступничества существуют и кто имеет право на него?</p></div>
-        <div class="question-card" onclick="openModal('modal15')"><span class="badge">Имена Аллаха</span><h3>15. Имя Аллаха «Аль-Илях» и его значение</h3><p>Что означает имя Аллаха «Аль-Илях» и как оно связано с Таухидом?</p></div>
-        <div class="question-card" onclick="openModal('modal16')"><span class="badge">Имена Аллаха</span><h3>16. Атрибут «Аль-Улюв» (Возвышенность)</h3><p>Где находится Аллах? Над Троном или везде?</p></div>
-        <div class="question-card" onclick="openModal('modal17')"><span class="badge">Имена Аллаха</span><h3>17. Атрибут «Аль-Йадайн» (Две Руки)</h3><p>Что мы говорим о «Руках» Аллаха и в чем ошибка тех, кто их искажает?</p></div>
-        <div class="question-card" onclick="openModal('modal18')"><span class="badge">Имена Аллаха</span><h3>18. Атрибут «Аль-Ваджх» (Лик)</h3><p>Что означает «Лик Аллаха» и почему нельзя говорить, что это «Сущность»?</p></div>
-        <div class="question-card" onclick="openModal('modal19')"><span class="badge">Имена Аллаха</span><h3>19. Атрибут «Аль-Истива» (Возвышение над Троном)</h3><p>Как мы понимаем «Возвышение над Троном» и в чем ошибка ашаритов?</p></div>
-        <div class="question-card" onclick="openModal('modal20')"><span class="badge">Имена Аллаха</span><h3>20. Атрибут «Аль-Назуль» (Нисхождение)</h3><p>Нисходит ли Аллах на ближайшее небо? Как это понимать?</p></div>
-        <div class="question-card" onclick="openModal('modal21')"><span class="badge">Имена Аллаха</span><h3>21. Атрибут «Аль-Маийя» (Бытие с творениями)</h3><p>Аллах «с нами» — означает ли это, что Он везде?</p></div>
-        <div class="question-card" onclick="openModal('modal22')"><span class="badge">Имена Аллаха</span><h3>22. Атрибут «Аль-Калам» (Речь)</h3><p>Является ли Речь атрибутом Аллаха? Сотворена ли она?</p></div>
-        <div class="question-card" onclick="openModal('modal23')"><span class="badge">Имена Аллаха</span><h3>23. Атрибут «Аль-Сам'» (Слух)</h3><p>Слышит ли Аллах все звуки? Отличается ли Его Слух от нашего?</p></div>
-        <div class="question-card" onclick="openModal('modal24')"><span class="badge">Имена Аллаха</span><h3>24. Атрибут «Аль-Басар» (Зрение)</h3><p>Видит ли Аллах все вещи? Объемлет ли Его зрение всё?</p></div>
-        <div class="question-card" onclick="openModal('modal25')"><span class="badge">Имена Аллаха</span><h3>25. Атрибут «Аль-Ридá» (Довольство) и «Аль-Гадáб» (Гнев)</h3><p>Есть ли у Аллаха довольство и гнев? Как это понимать?</p></div>
-        <div class="question-card" onclick="openModal('modal26')"><span class="badge">Имена Аллаха</span><h3>26. Атрибут «Аль-Хубб» (Любовь)</h3><p>Любит ли Аллах? Кого Он любит и кого не любит?</p></div>
-        <div class="question-card" onclick="openModal('modal27')"><span class="badge">Имена Аллаха</span><h3>27. Атрибут «Аль-ФарХ» (Радость)</h3><p>Радуется ли Аллах покаянию раба? Как это понимать?</p></div>
-        <div class="question-card" onclick="openModal('modal28')"><span class="badge">Имена Аллаха</span><h3>28. Атрибут «Аль-Джахль» (Смех)</h3><p>Смеется ли Аллах? Что означает «Смех Аллаха»?</p></div>
-        <div class="question-card" onclick="openModal('modal29')"><span class="badge">Имена Аллаха</span><h3>29. Атрибут «Аль-Иляф» (Чудодействие)</h3><p>Может ли Аллах делать невозможное? Есть ли что-то вне Его власти?</p></div>
-        <div class="question-card" onclick="openModal('modal30')"><span class="badge">Имена Аллаха</span><h3>30. Атрибут «Аль-Хаят» (Жизнь)</h3><p>Жизнь Аллаха вечна или сотворена? Отличается ли она от нашей?</p></div>
-        <div class="question-card" onclick="openModal('modal31')"><span class="badge">Имена Аллаха</span><h3>31. Атрибут «Аль-Кийюмийя» (Самосуществование)</h3><p>Нуждается ли Аллах в чем-либо? Все ли нуждается в Нем?</p></div>
-        <div class="question-card" onclick="openModal('modal32')"><span class="badge">Имена Аллаха</span><h3>32. Атрибут «Аль-Вахданийя» (Единственность)</h3><p>Что означает Единственность Аллаха? В чем она проявляется?</p></div>
-        <div class="question-card" onclick="openModal('modal33')"><span class="badge">Имена Аллаха</span><h3>33. Атрибут «Аль-Ахадийя» (Абсолютная Единица)</h3><p>В чем разница между «Аль-Вахд» и «Аль-Ахад»?</p></div>
-        <div class="question-card" onclick="openModal('modal34')"><span class="badge">Имена Аллаха</span><h3>34. Атрибут «Аль-Кудра» (Мощь)</h3><p>Всё ли в власти Аллаха? Может ли Он создать подобного Себе?</p></div>
-        <div class="question-card" onclick="openModal('modal35')"><span class="badge">Имена Аллаха</span><h3>35. Атрибут «Аль-Ирада» (Воля)</h3><p>Есть ли у Аллаха два вида воли? В чем разница между ними?</p></div>
-        <div class="question-card" onclick="openModal('modal36')"><span class="badge">Имена Аллаха</span><h3>36. Атрибут «Аль-Ильм» (Знание)</h3><p>Знание Аллаха объемлет всё? Знает ли Он скрытое и явное?</p></div>
-        <div class="question-card" onclick="openModal('modal37')"><span class="badge">Имена Аллаха</span><h3>37. Атрибут «Аль-Хикма» (Мудрость)</h3><p>Всё ли Аллах делает мудро? Есть ли в Его действиях бессмыслица?</p></div>
-        <div class="question-card" onclick="openModal('modal38')"><span class="badge">Имена Аллаха</span><h3>38. Атрибут «Аль-Адль» (Справедливость)</h3><p>Справедлив ли Аллах? Обижает ли Он кого-либо?</p></div>
-        <div class="question-card" onclick="openModal('modal39')"><span class="badge">Имена Аллаха</span><h3>39. Атрибут «Аль-Рахма» (Милость)</h3><p>Объемлет ли милость Аллаха всё? Кого она достигает?</p></div>
-        <div class="question-card" onclick="openModal('modal40')"><span class="badge">Имена Аллаха</span><h3>40. Атрибут «Аль-Гадáб» (Гнев)</h3><p>Гневается ли Аллах? На кого гневается Аллах?</p></div>
-        <div class="question-card" onclick="openModal('modal41')"><span class="badge">Пророчество</span><h3>41. Печать пророчества</h3><p>Кто последний пророк? Возможно ли пророчество после Мухаммада ﷺ?</p></div>
-        <div class="question-card" onclick="openModal('modal42')"><span class="badge">Пророчество</span><h3>42. Исма аль-Анбия (Непогрешимость пророков)</h3><p>Могут ли пророки совершать грехи? В чем ошибка муътазилитов?</p></div>
-        <div class="question-card" onclick="openModal('modal43')"><span class="badge">Пророчество</span><h3>43. Му'джизаты Пророка Мухаммада ﷺ</h3><p>Какое главное чудо Пророка ﷺ? Почему оно вечное?</p></div>
-        <div class="question-card" onclick="openModal('modal44')"><span class="badge">Загробная жизнь</span><h3>44. Мост (Сырат) над Адом</h3><p>Что такое Сырат? Все ли будут проходить через него?</p></div>
-        <div class="question-card" onclick="openModal('modal45')"><span class="badge">Загробная жизнь</span><h3>45. Весы (Мизан) дел</h3><p>Будут ли взвешиваться дела в Судный День? Имеют ли весы чаши?</p></div>
-        <div class="question-card" onclick="openModal('modal46')"><span class="badge">Загробная жизнь</span><h3>46. Водоём Пророка ﷺ (Аль-Хауд)</h3><p>Что такое водоём Пророка ﷺ? Кто будет пить из него?</p></div>
-        <div class="question-card" onclick="openModal('modal47')"><span class="badge">Конец Света</span><h3>47. Признаки Часа: Даджаль</h3><p>Кто такой Даджаль? Какие у него особенности и испытания?</p></div>
-        <div class="question-card" onclick="openModal('modal48')"><span class="badge">Конец Света</span><h3>48. Возвращение Исы (мир ему)</h3><p>Спустится ли Иса ибн Марьям? Что он будет делать?</p></div>
-        <div class="question-card" onclick="openModal('modal49')"><span class="badge">Конец Света</span><h3>49. Яджудж и Маджудж</h3><p>Кто такие Яджудж и Маджудж? Когда они выйдут?</p></div>
-        <div class="question-card" onclick="openModal('modal50')"><span class="badge">Конец Света</span><h3>50. Махди и установление справедливости</h3><p>Кто такой Махди? Появится ли он до или после Исы?</p></div>
-    </div>
-
+    <div class="question-grid" id="questionsGrid"></div>
     <footer>
         <p>Да наставит Аллах на прямой путь и дарует праведного супруга. Амин.</p>
     </footer>
 </div>
 
-<!-- MODALS -->
-
-<div id="modal1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal1')">&times;</span><h2>1. Атрибуты Аллаха и принцип «Била кайф»</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Мы утверждаем за Аллахом все атрибуты, которыми Он описал Себя в Коране и в Сунне. Мы понимаем их в соответствии с Величием Аллаха, <b>без искажения (тахриф), без отрицания (та'тыль), без уточнения «как» (такйиф) и без уподобления творениям (тамсиль)</b>. Мы говорим: «Рука Аллаха есть, но не такая, как у творений», «Он возвысился над Троном, но мы не знаем, как именно, и не спрашиваем об этом».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты и Джахмиты:</b> Полностью отрицают атрибуты Аллаха.</li><li><b>Ашариты и Матуридиты:</b> Искажают смысл атрибутов (тахвиль). Например, говорят, что «Рука» означает «Сила», «Лицо» — «Сущность».</li></ul></div></div></div></div>
-
-<div id="modal2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal2')">&times;</span><h2>2. Определение Имана и его изменения</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Иман — это <b>убеждение сердцем, произнесение языком и совершение действий телом</b>. Он <b>увеличивается</b> при совершении послушания и <b>уменьшается</b> при совершении грехов. Действия являются неотъемлемой частью Имана.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муриджиты:</b> Говорят, что Иман — это только убеждение в сердце, а действия не входят в Иман. Они также утверждают, что Иман не увеличивается и не уменьшается.</li><li><b>Хариджиты:</b> Считают, что оставление действия полностью выводит человека из Имана.</li></ul></div></div></div></div>
-
-<div id="modal3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal3')">&times;</span><h2>3. Методология Такфира</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Мы не объявляем конкретного мусульманина неверующим за совершение греха, даже большого, если он не считает этот грех халялем. Такфир конкретного человека требует соблюдения условий и отсутствия препятствий, таких как незнание, принуждение или ошибка в иджтихаде.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Хариджиты:</b> Объявляют мусульманина неверующим за совершение большого греха.</li><li><b>Современные радикальные группировки:</b> Делают массовый такфир без разбора условий и препятствий.</li></ul></div></div></div></div>
-
-<div id="modal4" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal4')">&times;</span><h2>4. Тауассуль и обращение к мертвым</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Разрешенные виды Тауассуля: 1) Аллахом и Его именами/атрибутами. 2) Своими праведными делами. 3) Дуа живого праведного человека. <b>Обращаться к мертвым, пророкам или праведникам с просьбой о помощи — это явный ширк.</b></div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Кубуриты и крайние суфии:</b> Считают, что можно взывать к мертвым пророкам или святым.</li><li><b>Ашариты (некоторые):</b> Позволяют тауассуль «личностью» Пророка, что является нововведением.</li></ul></div></div></div></div>
-
-<div id="modal5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal5')">&times;</span><h2>5. Речь Аллаха: сотворенность Корана</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Коран — это несотворенная Речь Аллаха. Он ниспослан, а не создан. Сама Речь Аллаха несотворенна, а наши голоса, буквы, чернила и бумага — сотворены. Кто скажет, что Коран сотворен, тот кафир.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты и Джахмиты:</b> Утверждают, что Коран сотворен.</li><li><b>Курабиты:</b> Говорят, что Коран — это сам Аллах.</li></ul></div></div></div></div>
-
-<div id="modal6" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal6')">&times;</span><h2>6. Видение Аллаха (Ар-Руья)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Верующие будут видеть Аллаха в Судный День в Раю, и это будет величайшим блаженством. Мы видим Его, но Он не окружен местом, не имеет направления, и наше зрение не объемлет Его.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты, Джахмиты и Ашариты:</b> Отрицают видение Аллаха глазами в Раю.</li></ul></div></div></div></div>
-
-<div id="modal7" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal7')">&times;</span><h2>7. Единственность Аллаха в Господстве</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Таухид аль-Рубубийя означает веру в то, что Аллах — Единственный Творец, Властелин, Управитель всего сущего. Однако одного этого недостаточно для входа в Ислам. Многобожники Мекки также верили в это, но не входили в Ислам, потому что не исповедовали Таухид аль-Улюхийя (единственность в поклонении).</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Джахмиты:</b> Смешивают Таухид аль-Рубубийя и аль-Улюхийя, считая, что достаточно верить в Творца.</li></ul></div></div></div></div>
-
-<div id="modal8" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal8')">&times;</span><h2>8. Виды ширка: большой и малый</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer"><b>Большой ширк</b> выводит человека из Ислама: обращение к мертвым, жертвоприношение не Аллаху, клятва не Аллаху с убеждением величия того, кому клянешься. <b>Малый ширк</b> не выводит из Ислама, но является большим грехом: показуха (рия') в малых делах, клятва не Аллаху без убеждения величия, слова «что пожелал Аллах и ты».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муриджиты:</b> Считают, что любой ширк в словах не выводит из Ислама.</li><li><b>Хариджиты:</b> Считают малый ширк равным большому.</li></ul></div></div></div></div>
-
-<div id="modal9" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal9')">&times;</span><h2>9. Предопределение (Кадар) и свобода воли</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах предопределил всё сущее и записал это в Хранимой Скрижали. Однако человек обладает свободой воли и выбором в своих действиях. Аллах создал действия человека, но человек совершает их по своей воле. Мы верим во все четыре уровня Кадара: 1) Аллах знает всё, 2) Он записал всё, 3) Он пожелал всё, 4) Он создал всё.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Джабариты:</b> Считают, что человек полностью принужден и не имеет свободы воли (как перо в руке писателя).</li><li><b>Кадариты (Муътазилиты):</b> Считают, что человек сам создает свои действия, а Аллах не знает их заранее.</li></ul></div></div></div></div>
-
-<div id="modal10" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal10')">&times;</span><h2>10. Чудеса пророков и караматы праведников</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer"><b>Му'джиза</b> — это чудо, которое Аллах дает пророку в подтверждение его правдивости, и оно сопровождается вызовом (тахадди) совершить подобное. <b>Карама</b> — это необычное явление, которое Аллах дает праведнику без вызова. Разница в том, что му'джиза — это доказательство пророчества, а карама — это милость Аллаха праведнику.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают караматы, считая, что необычные явления бывают только у пророков.</li><li><b>Крайние суфии:</b> Считают караматы выше му'джиз и доказательством святости (вилая).</li></ul></div></div></div></div>
-
-<div id="modal11" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal11')">&times;</span><h2>11. Отношение к сподвижникам Пророка ﷺ</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Мы любим всех сподвижников, воздерживаемся от обсуждения их разногласий и молимся за них: «О Аллах, будь доволен ими». Мы считаем, что они — лучшие поколения, и что их справедливость (адаля) подтверждена Кораном и Сунной. Мы не проклинаем никого из них.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Шииты (Рафидиты):</b> Проклинают большинство сподвижников, считают их вероотступниками после смерти Пророка ﷺ и обвиняют их в измене.</li><li><b>Хариджиты:</b> Объявляют неверующими сподвижников, согласившихся на третейский суд (Али и Муавия).</li></ul></div></div></div></div>
-
-<div id="modal12" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal12')">&times;</span><h2>12. Нововведения (Бид'а) в религии</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Бид'а — это нововведение в религии, которого не было во времена Пророка ﷺ и его сподвижников. Каждая бид'а — это заблуждение, и каждое заблуждение — в Огне. Бид'а опаснее греха, потому что грешник знает, что грешит, и может покаяться, а нововведенец считает, что делает добро, и не кается.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Суфии и ашариты:</b> Считают, что бид'а может быть «хорошей» (бид'а хасана) и вознаграждаемой.</li><li><b>Муътазилиты:</b> Считают, что нововведенец будет в Аду вечно, как неверующий.</li></ul></div></div></div></div>
-
-<div id="modal13" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal13')">&times;</span><h2>13. Мучения могилы и блаженство в ней</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Мы верим в мучения могилы для грешников и блаженство могилы для праведников. Это подтверждается множеством хадисов и аятов Корана. Мучения и блаженство касаются души и тела одновременно. Мы ищем убежища у Аллаха от мучений могилы в каждом намазе.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты и некоторые ашариты:</b> Отрицают мучения могилы, считая, что они будут только в Судный День.</li><li><b>Джахмиты:</b> Полностью отрицают жизнь в могиле.</li></ul></div></div></div></div>
-
-<div id="modal14" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal14')">&times;</span><h2>14. Заступничество (Шафа'а) в Судный День</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Заступничество бывает нескольких видов: 1) Великое заступничество (аль-шафа'а аль-узма) — только для Пророка ﷺ, чтобы Аллах начал суд. 2) Заступничество за вход в Рай. 3) Заступничество за грешников из уммы, чтобы они не вошли в Ад или чтобы вышли из него. Заступничество действительно только с разрешения Аллаха и за того, кем Он доволен.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты и Хариджиты:</b> Полностью отрицают заступничество за грешников.</li><li><b>Кубуриты:</b> Считают, что можно просить заступничества у мертвых пророков и святых.</li></ul></div></div></div></div>
-
-<div id="modal15" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal15')">&times;</span><h2>15. Имя Аллаха «Аль-Илях» и его значение</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">«Аль-Илях» означает Тот, Кому поклоняются по праву, Единственный, достойный поклонения. Это имя включает в себя все остальные имена и атрибуты Аллаха. Таухид — это признание, что только Аллах является Иляхом (божеством), достойным поклонения.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Джахмиты:</b> Сводят Таухид только к Таухиду аль-Рубубийя, считая, что достаточно признать Аллаха Творцом.</li></ul></div></div></div></div>
-
-<div id="modal16" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal16')">&times;</span><h2>16. Атрибут «Аль-Улюв» (Возвышенность)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах возвышен над Своими творениями. Он находится на небе, над Троном, выше всех творений. Он не находится везде (не «вездеприсущ»), а Его знание объемлет всё. Мы возвышаем Аллаха над тем, что не подобает Ему.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты и Матуридиты:</b> Говорят, что Аллах «не на небе и не на земле», «не внутри мира и не вне его», что является отрицанием атрибута Возвышенности.</li><li><b>Джахмиты:</b> Полностью отрицают, что Аллах находится на Троне.</li></ul></div></div></div></div>
-
-<div id="modal17" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal17')">&times;</span><h2>17. Атрибут «Аль-Йадайн» (Две Руки)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">У Аллаха есть две Руки, обе правые, как сказал Пророк ﷺ. Мы утверждаем это, не спрашивая «как» и не уподобляя творениям. Руки Аллаха не такие, как у творений.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты:</b> Искажают, говоря, что «Рука» означает «Сила» или «Милость».</li><li><b>Муътазилиты:</b> Полностью отрицают атрибут Рук.</li></ul></div></div></div></div>
-
-<div id="modal18" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal18')">&times;</span><h2>18. Атрибут «Аль-Ваджх» (Лик)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">У Аллаха есть Лик (Ваджх), который является атрибутом Его Сущности. Мы утверждаем это, не спрашивая «как» и не уподобляя творениям. Лик Аллаха останется, когда всё perish.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты:</b> Искажают, говоря, что «Лик» означает «Сущность» или «Господство».</li><li><b>Муътазилиты:</b> Отрицают атрибут Лика.</li></ul></div></div></div></div>
-
-<div id="modal19" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal19')">&times;</span><h2>19. Атрибут «Аль-Истива» (Возвышение над Троном)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах возвысился над Троном (истава) в соответствии с Его Величием. Мы не знаем «как», но утверждаем, что это реально. Мы говорим, как сказал имам Малик: «Возвышение известно, как — неизвестно, вера в это обязательна, а спрашивание об этом — нововведение».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты:</b> Искажают, говоря, что «истава» означает «истауля» (овладел, победил).</li><li><b>Муътазилиты:</b> Отрицают, что Аллах находится на Троне.</li></ul></div></div></div></div>
-
-<div id="modal20" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal20')">&times;</span><h2>20. Атрибут «Аль-Назуль» (Нисхождение)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах нисходит на ближайшее небо в последнюю треть ночи, как сказал Пророк ﷺ. Мы утверждаем это, не спрашивая «как» и не уподобляя творениям. Нисхождение Аллаха подобает Его Величию, а не подобно нисхождению творений.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты:</b> Искажают, говоря, что «нисходит Его повеление» или «нисходят ангелы».</li><li><b>Муътазилиты:</b> Полностью отрицают нисхождение.</li></ul></div></div></div></div>
-
-<div id="modal21" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal21')">&times;</span><h2>21. Атрибут «Аль-Маийя» (Бытие с творениями)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах «с нами» по Своему знанию, слуху, зрению и власти, но не по Своей Сущности. Он возвышен над Троном, но Его знание объемлет всё. Мы различаем два вида «маийя»: общее (со всеми творениями по знанию) и особое (с верующими по поддержке и помощи).</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты и Матуридиты:</b> Говорят, что Аллах «с творениями по Сущности», что является отрицанием атрибута Возвышенности.</li><li><b>Джахмиты:</b> Считают, что Аллах «везде», что является куфром.</li></ul></div></div></div></div>
-
-<div id="modal22" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal22')">&times;</span><h2>22. Атрибут «Аль-Калам» (Речь)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах говорит, и Его Речь — это вечный атрибут, несотворенный. Коран — это Речь Аллаха, ниспосланная, а не созданная. Аллах говорит, когда пожелает, и Его Речь подобает Его Величию.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты и Джахмиты:</b> Считают, что Коран сотворен.</li><li><b>Ашариты:</b> Говорят, что Речь Аллаха — это «внутренняя речь» (калям нафси), а Коран, который мы читаем — это «выражение» этой речи, что является искажением.</li></ul></div></div></div></div>
-
-<div id="modal23" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal23')">&times;</span><h2>23. Атрибут «Аль-Сам'» (Слух)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах слышит все звуки, явные и скрытые, арабские и неарабские. Его Слух не подобен слуху творений. Он слышит спор двух людей, как сказал Аллах: «Аллах услышал слова той, которая препиралась с тобой».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Сводят Слух к Знанию, говоря, что Аллах «знает» звуки, а не «слышит» их.</li></ul></div></div></div></div>
-
-<div id="modal24" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal24')">&times;</span><h2>24. Атрибут «Аль-Басар» (Зрение)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах видит все вещи, явные и скрытые. Его Зрение объемлет всё, и ничто не скрыто от Него. «Он знает тайное и еще более сокровенное. Он знает сокровенное на небесах и на земле. Воистину, Он знает то, что в сердцах».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Сводят Зрение к Знанию, говоря, что Аллах «знает» вещи, а не «видит» их.</li></ul></div></div></div></div>
-
-<div id="modal25" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal25')">&times;</span><h2>25. Атрибут «Аль-Ридá» (Довольство) и «Аль-Гадáб» (Гнев)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах доволен верой и послушанием, и гневается на неверие и грехи. Его Довольство и Гнев — это реальные атрибуты, подобающие Его Величию, не подобные чувствам творений. «Аллах доволен верующими, когда они просят у Него прощения».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают Довольство и Гнев, считая, что это лишь слова для обозначения вознаграждения и наказания.</li><li><b>Ашариты:</b> Искажают, говоря, что Гнев — это «желание наказать».</li></ul></div></div></div></div>
-
-<div id="modal26" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal26')">&times;</span><h2>26. Атрибут «Аль-Хубб» (Любовь)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах любит праведников, тех, кто делает добро, тех, кто справедлив, и тех, кто раскаивается. Его Любовь — это реальный атрибут, подобающий Его Величию. «Аллах любит тех, кто сражается на Его пути шеренгой».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Сводят Любовь к Желанию вознаграждения, говоря, что «любить» означает «желать дать награду».</li></ul></div></div></div></div>
-
-<div id="modal27" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal27')">&times;</span><h2>27. Атрибут «Аль-ФарХ» (Радость)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах радуется покаянию раба, как сказал Пророк ﷺ: «Аллах радуется покаянию раба больше, чем тот, кто потерял своего верблюда в пустыне и нашел его». Это реальная радость, подобающая Величию Аллаха.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают Радость, считая, что Аллах не испытывает эмоций.</li></ul></div></div></div></div>
-
-<div id="modal28" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal28')">&times;</span><h2>28. Атрибут «Аль-Джахль» (Смех)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах смеется, как сказано в хадисе о двух ангелах, записывающих дела: «Они поднимаются к Аллаху, и Он смеется над ними». Это реальный смех, подобающий Величию Аллаха, без звука и движения зубов.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Ашариты:</b> Искажают, говоря, что «смех» означает «довольство» или «вознаграждение».</li><li><b>Муътазилиты:</b> Полностью отрицают смех Аллаха.</li></ul></div></div></div></div>
-
-<div id="modal29" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal29')">&times;</span><h2>29. Атрибут «Аль-Иляф» (Чудодействие)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах способен на всё возможное. Он делает всё, что пожелает, и ничто не может помешать Ему. Однако Аллах не делает невозможного (например, не создает другого бога, не лжет, не поступает несправедливо), не потому, что не способен, а потому, что это не подобает Его Совершенству.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Аллах обязан делать «наилучшее» для каждого человека, что ограничивает Его волю.</li></ul></div></div></div></div>
-
-<div id="modal30" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal30')">&times;</span><h2>30. Атрибут «Аль-Хаят» (Жизнь)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах Жив вечной жизнью, не имеющей начала и конца. Его Жизнь не подобна жизни творений. Он не умирает, не спит, не устает. «Аллах — нет божества, кроме Него, Живого, Вседержителя. Им не овладевают ни дремота, ни сон».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Джахмиты:</b> Говорят, что Жизнь Аллаха — это Его Сущность, что является отрицанием атрибута.</li></ul></div></div></div></div>
-
-<div id="modal31" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal31')">&times;</span><h2>31. Атрибут «Аль-Кийюмийя» (Самосуществование)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах — Самосуществующий, Который не нуждается ни в ком и ни в чем. Все творения нуждаются в Нем. Он поддерживает всё сущее, и ничто не существует без Его воли. «Аллах — нет божества, кроме Него, Живого, Вседержителя (Кайюм)».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Философы:</b> Считают, что мир вечен и не нуждается в постоянном поддержании Аллаха.</li></ul></div></div></div></div>
-
-<div id="modal32" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal32')">&times;</span><h2>32. Атрибут «Аль-Вахданийя» (Единственность)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах Единственен в Своей Сущности, атрибутах и действиях. Нет никого подобного Ему, нет сотоварища в Его Господстве, и никто не достоин поклонения, кроме Него. «Скажи: Он — Аллах Единый (Ахад)».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Христиане:</b> Верят в Троицу, что является отрицанием Единственности.</li><li><b>Многобожники:</b> Придают Аллаху сотоварищей в поклонении.</li></ul></div></div></div></div>
-
-<div id="modal33" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal33')">&times;</span><h2>33. Атрибут «Аль-Ахадийя» (Абсолютная Единица)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">«Аль-Ахад» означает Абсолютную Единицу, Которая не делится на части, не имеет подобия и не состоит из компонентов. Это более сильное утверждение Единственности, чем «Аль-Вахд». «Он не родил и не был рожден, и нет никого равного Ему».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Христиане:</b> Считают, что Аллах состоит из трех лиц, что противоречит Абсолютной Единице.</li></ul></div></div></div>
-
-<div id="modal34" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal34')">&times;</span><h2>34. Атрибут «Аль-Кудра» (Мощь)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах Всемогущ, и Его Мощи подвластно всё. Он создает всё, что пожелает, и ничто не может помешать Ему. «Воистину, Аллах способен на всякую вещь». Однако Аллах не делает абсурдного (например, не создает другого бога), не потому, что не способен, а потому, что это не подобает Его Мудрости.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Аллах не может делать зло, что ограничивает Его Мощь.</li></ul></div></div></div></div>
-
-<div id="modal35" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal35')">&times;</span><h2>35. Атрибут «Аль-Ирада» (Воля)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">У Аллаха есть два вида Воли: 1) Вселенская (кавнийя) — всё, что происходит во вселенной, происходит по Его воле, даже если Ему не нравится (например, неверие). 2) Религиозная (шар'ийя) — то, что Аллах любит и повелевает, но может не произойти (например, вера всех людей). «Аллах желает для вас облегчения, а не затруднения».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Признают только Религиозную волю и отрицают Вселенскую, считая, что Аллах не желает греха.</li><li><b>Джабариты:</b> Признают только Вселенскую волю и отрицают Религиозную, считая, что Аллах повелевает то, что Ему не нравится.</li></ul></div></div></div></div>
-
-<div id="modal36" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal36')">&times;</span><h2>36. Атрибут «Аль-Ильм» (Знание)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах знает всё: явное и скрытое, прошлое, настоящее и будущее. Его Знание объемлет всё, и ничто не скрыто от Него. «У Него ключи от невидимого, и знает которые только Он. Он знает то, что на суше и в море. Не падает лист, который Он не знал бы».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Кадариты:</b> Считают, что Аллах не знает действий людей, пока они их не совершат.</li><li><b>Муътазилиты:</b> Считают, что Аллах знает вещи «до того, как они существуют», но не знает их в деталях.</li></ul></div></div></div></div>
-
-<div id="modal37" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal37')">&times;</span><h2>37. Атрибут «Аль-Хикма» (Мудрость)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах Мудр во всех Своих действиях. Он не делает ничего бессмысленно или напрасно. «Неужели Мы сравним тех, которые уверовали и совершали праведные деяния, с теми, которые распространяли нечестие на земле? Или Мы сравним богобоязненных с грешниками?».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Аллах «обязан» делать наилучшее для каждого, что ограничивает Его Мудрость.</li><li><b>Джабариты:</b> Считают, что Аллах не обязан быть мудрым и может делать что угодно.</li></ul></div></div></div></div>
-
-<div id="modal38" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal38')">&times;</span><h2>38. Атрибут «Аль-Адль» (Справедливость)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах Справедлив и не обижает никого. «Воистину, Аллах не обижает людей ни на йоту, но это люди сами обижают себя». Он воздает каждому по его делам, и Его наказание — справедливо, а Его милость — превыше всего.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Аллах «обязан» не наказывать верующих, совершивших большие грехи, если они не покаялись.</li><li><b>Джабариты:</b> Считают, что Аллах может наказывать без причины, что противоречит Справедливости.</li></ul></div></div></div></div>
-
-<div id="modal39" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal39')">&times;</span><h2>39. Атрибут «Аль-Рахма» (Милость)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Милость Аллаха объемлет всё. «Моя милость объемлет всякую вещь». Он милостив ко всем творениям в этом мире и к верующим в следующем. Его Милость предшествует Его Гневу. «Когда Аллах завершил творение, Он написал у Себя: "Воистину, Моя милость опережает Мой гнев"».</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Хариджиты:</b> Считают, что Аллах не простит грешников из уммы, даже если они верующие.</li><li><b>Муриджиты:</b> Считают, что Аллах обязательно помилует всех, даже многобожников.</li></ul></div></div></div></div>
-
-<div id="modal40" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal40')">&times;</span><h2>40. Атрибут «Аль-Гадáб» (Гнев)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Аллах гневается на неверующих и грешников. Его Гнев — это реальный атрибут, подобающий Его Величию. «Аллах гневается на того, кто ослушивается Его, даже если тот говорит, что любит Аллаха». Гнев Аллаха не подобен гневу творений.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают Гнев, считая, что это лишь слова для обозначения наказания.</li><li><b>Ашариты:</b> Искажают, говоря, что Гнев — это «желание наказать».</li></ul></div></div></div></div>
-
-<div id="modal41" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal41')">&times;</span><h2>41. Печать пророчества</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Мухаммад ﷺ — последний пророк и посланник Аллаха. После него не будет пророков. «Мухаммад не является отцом ни одного из ваших мужчин, но он — посланник Аллаха и печать пророков». Тот, кто утверждает, что после него будет пророк, — неверующий.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Кадианисты (Ахмадийя):</b> Считают, что Мирза Гулам Ахмад был пророком после Мухаммада ﷺ, что является явным куфром.</li><li><b>Шииты (некоторые):</b> Считают, что имамы получают откровение, подобное пророческому.</li></ul></div></div></div></div>
-
-<div id="modal42" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal42')">&times;</span><h2>42. Исма аль-Анбия (Непогрешимость пророков)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Пророки защищены Аллахом от совершения ширка и крупных грехов. Они могут совершать малые грехи по ошибке, но Аллах немедленно исправляет их и не позволяет им упорствовать в грехе. Они непогрешимы в передаче откровения.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что пророки защищены от всех грехов, даже малых, и что это обязательно.</li><li><b>Шииты:</b> Считают, что имамы также непогрешимы, как пророки.</li></ul></div></div></div></div>
-
-<div id="modal43" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal43')">&times;</span><h2>43. Му'джизаты Пророка Мухаммада ﷺ</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Главное чудо Пророка ﷺ — это Коран, который является вечным чудом, подходящим для всех времен и народов. Другие чудеса: расщепление луны, вода, текущая из его пальцев, ночное путешествие (Исра и Мирадж), умножение еды. Коран — величайшее чудо, потому что он бросает вызов человечеству и джиннам принести подобное, и они не смогут.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Коран не является чудом, а чудом было только «невозможность принести подобное».</li><li><b>Рационалисты:</b> Отрицают физические чудеса, считая, что они были лишь метафорами.</li></ul></div></div></div></div>
-
-<div id="modal44" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal44')">&times;</span><h2>44. Мост (Сырат) над Адом</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Сырат — это мост, проложенный над Адом, по которому будут проходить люди в Судный День. Верующие пройдут по нему со скоростью, соответствующей их делам: некоторые как молния, некоторые как ветер, некоторые как скачущий всадник, некоторые бегом, некоторые шагом, некоторые ползком. Лицемеры и неверующие упадут в Ад.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают существование Сырата, считая, что это метафора.</li><li><b>Джахмиты:</b> Полностью отрицают мост над Адом.</li></ul></div></div></div></div>
-
-<div id="modal45" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal45')">&times;</span><h2>45. Весы (Мизан) дел</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">В Судный День будут установлены Весы (Мизан), на которых будут взвешиваться дела людей. «Мы установим справедливые весы в День Воскресения, и ни с кем не поступят несправедливо. Если будет вес горчичного зерна, Мы принесем его. Довольно того, что Мы ведем счет». Весы имеют чаши и язык, и они реальны, а не метафоричны.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Считают, что Весы — это метафора справедливости, а не реальный объект.</li><li><b>Джахмиты:</b> Отрицают физические Весы.</li></ul></div></div></div></div>
-
-<div id="modal46" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal46')">&times;</span><h2>46. Водоём Пророка ﷺ (Аль-Хауд)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">У каждого пророка есть водоём, но водоём Пророка Мухаммада ﷺ — величайший. Он находится на месте собрания людей в Судный День. Вода его белее молока, слаще меда, и сосуды его как звезды. Кто выпьет из него — никогда не испытает жажды. Верующие из уммы Мухаммада ﷺ будут пить из него, а те, кто изменил религию после него, будут отогнаны.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Муътазилиты:</b> Отрицают водоём, считая, что это метафора знаний Пророка ﷺ.</li><li><b>Хариджиты:</b> Считают, что все грешники из уммы будут отогнаны от водоёма.</li></ul></div></div></div></div>
-
-<div id="modal47" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal47')">&times;</span><h2>47. Признаки Часа: Даджаль</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Даджаль — это великий обманщик, который появится перед Концом Света. У него будет одно око (правое, как виноградина), а на лбу написано «кафир», что прочтет каждый верующий, грамотный или неграмотный. Он будет утверждать, что он бог, и будет творить ложные чудеса (огонь и вода, но огонь его — вода, а вода — огонь). Он будет на земле 40 дней (день как год, день как неделя, остальные как обычные дни). Иса ибн Марьям убьет его у ворот Лодда.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Рационалисты и модернисты:</b> Считают, что Даджаль — это метафора материализма или западной цивилизации, а не реальная личность.</li><li><b>Некоторые суфии:</b> Считают, что Даджаль уже пришел и это определенная историческая личность.</li></ul></div></div></div></div>
-
-<div id="modal48" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal48')">&times;</span><h2>48. Возвращение Исы (мир ему)</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Иса ибн Марьям (мир ему) жив и находится на небе. Он спустится на белую башню к востоку от Дамаска перед Концом Света. Он будет судить по Шариату Мухаммада ﷺ, разобьет крест, убьет свинью, отменит джизью (так как все будут мусульманами), убьет Даджаля у ворот Лодда, женится, будет править 40 лет, умрет и будет похоронен рядом с Пророком ﷺ в Медине.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Христиане:</b> Считают, что Иса был распят и воскрес, а не вознесен живым на небо.</li><li><b>Джахмиты и Муътазилиты:</b> Отрицают возвращение Исы, считая, что он умер.</li><li><b>Шииты:</b> Считают, что Иса спустится для поддержки Махди, но не будет судить по Шариату Мухаммада ﷺ.</li></ul></div></div></div></div>
-
-<div id="modal49" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal49')">&times;</span><h2>49. Яджудж и Маджудж</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Яджудж и Маджудж — это два больших племени из потомков Адама, которые были заточены за стеной, построенной Зуль-Карнайном. Они выйдут перед Концом Света и будут распространять нечестие на земле, пить реки, стрелять стрелами в небо, которые вернутся окровавленными. Аллах уничтожит их, послав червя, который проникнет в их ноздри и убьет их. Затем Аллах пошлет дождь, который смоет их тела в море.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Рационалисты:</b> Считают, что Яджудж и Маджудж — это метафора варварских народов (монголов, гуннов), которые уже вышли.</li><li><b>Некоторые комментаторы:</b> Считают, что стена Зуль-Карнайна — это Китайская стена, что является ошибкой.</li></ul></div></div></div></div>
-
-<div id="modal50" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal50')">&times;</span><h2>50. Махди и установление справедливости</h2><div class="answer-section"><h4>✅ Как должен ответить (Ахлю Сунна):</h4><div class="correct-answer">Махди — это праведный халиф из потомков Пророка ﷺ (из рода Фатимы), который появится перед Концом Света. Он заполнит землю справедливостью, как она была заполнена несправедливостью. Он будет править 7, 8 или 9 лет. При нем будет изобилие, земля выбросит свои сокровища. Иса ибн Марьям спустится после появления Махди и будет молиться за ним.</div><h4>❌ Ошибки других течений:</h4><div class="deviation-answer"><ul><li><b>Шииты (Джафариты):</b> Считают, что Махди — это двенадцатый имам Мухаммад аль-Хасан аль-Аскари, который «исчез» в 874 году и находится в «сокрытии» (гайба), и что он уже живет более 1100 лет.</li><li><b>Суфии:</b> Считают, что Махди уже пришел и это определенный шейх тариката.</li><li><b>Рационалисты:</b> Отрицают Махди, считая, что это миф.</li></ul></div></div></div></div>
+<div id="mainModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <div class="answer-section">
+            <h4>✅ Правильный ответ (Ахлю Сунна):</h4>
+            <div class="correct-answer" id="modalCorrect"></div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer" id="modalDeviation"></div>
+        </div>
+    </div>
+</div>
 
 <script>
-    function openModal(id) {
-        document.getElementById(id).style.display = 'flex';
-    }
+const questionsData = [
+    { id: 1, badge: "Таухид ар-Рубубийя", title: "1. Суть Таухида ар-Рубубийя", desc: "Что включает в себя вера в Господство Аллаха?", correct: "Мы верим, что Аллах — Единственный Творец, Властелин и Управитель. Никакое действие не совершается без Его воли и создания.", deviation: "Мушрики верили в Рубубийю, но это не сделало их мусульманами. Муътазилиты же отрицают, что Аллах является творцом человеческих поступков." },
+    { id: 2, badge: "Таухид ар-Рубубийя", title: "2. Вера в Предопределение (Кадр)", desc: "Является ли вера в Кадр частью Рубубийи?", correct: "Да, вера в то, что всё хорошее и плохое предопределено Аллахом до создания творений — это основа Таухида ар-Рубубийя.", deviation: "Кадариты (муътазилиты) утверждают, что человек сам творит свои поступки, лишая Аллаха атрибута Создателя всего сущего." },
+    { id: 3, badge: "Таухид аль-Улюхийя", title: "3. Суть Таухида аль-Улюхийя", desc: "В чем заключается единобожие в поклонении?", correct: "Это направление всех видов поклонения (мольба, жертвоприношение, страх, надежда) только Аллаху, без придания Ему сотоварищей.", deviation: "Суфии и кубуриты направляют часть поклонения (дуа, мольбу о помощи) мертвым праведникам, что является явным ширком." },
+    { id: 4, badge: "Таухид аль-Улюхийя", title: "4. Разница между Рубубийей и Улюхийей", desc: "Почему веры только в Рубубийю недостаточно?", correct: "Рубубийя — это признание Аллаха Творцом. Улюхийя — это выделение Его только для поклонения. Мушрики верили в первое, но отвергли второе.", deviation: "Некоторые думают, что если человек признает Аллаха Творцом, он уже мусульманин, игнорируя необходимость ихласа в поклонении." },
+    { id: 5, badge: "Ихлас (Искренность)", title: "5. Условия принятия деяний", desc: "Каковы два главных условия принятия deeds?", correct: "1) Ихлас (искренность только перед Аллахом). 2) Мувафака (соответствие Сунне Пророка, мир ему и благословение).", deviation: "Суфии часто ставят любовь к шейху или духовную связь (рабиту) выше или наравне с искренностью перед Аллахом." },
+    { id: 6, badge: "Ширк", title: "6. Большой ширк", desc: "Что выводит человека из Ислама?", correct: "Большой ширк — это направление поклонения не Аллаху. Он аннулирует все деяния и делает человека вечным обитателем Ада.", deviation: "Муриджиты и крайние суфии смягчают это, говоря, что ширк в действиях не выводит из религии, если в сердце есть вера." },
+    { id: 7, badge: "Ширк", title: "7. Малый ширк (Рия)", desc: "Что такое малый ширк и чем он опасен?", correct: "Это лицемерие в деяниях (Рия) — совершение поклонения, чтобы люди видели и хвалили. Он не выводит из Ислама, но уничтожает награду.", deviation: "Хариджиты приравнивают рия к большому ширку, объявляя грешников неверующими." },
+    { id: 8, badge: "Ширк", title: "8. Ширк в словах и действиях", desc: "Примеры скрытого ширка?", correct: "Клятва не Аллахом, ношение оберегов (тамаим) для защиты, вера в приметы (тиьяра). Это малый ширк, если человек не верит, что предмет сам по себе влияет.", deviation: "Если человек верит, что оберег или амулет защищает сам по себе — это большой ширк. Некоторые ученые-ашариты дозволяют ношение амулетов с аятами, что является спорным и ведет к запретному." },
+    { id: 9, badge: "Асма ва-Сыфат", title: "9. Правило «Била кайф» (Без «как»)", desc: "Как мы понимаем атрибуты Аллаха?", correct: "Мы утверждаем атрибуты (Рука, Лицо, Возвышение), принимая их в соответствии с Величием Аллаха, не спрашивая «как» и не уподобляя творениям.", deviation: "Ашариты и матуридиты искажают смыслы (тахвиль), говоря, что «Рука» — это «сила», а «Возвышение» — это «господство»." },
+    { id: 10, badge: "Асма ва-Сыфат", title: "10. Запрет на Татыль (Лишение)", desc: "Почему отрицание атрибутов опасно?", correct: "Татыль — это отрицание атрибутов Аллаха. Это путь джахмитов и муътазилитов, которые говорят, что у Аллаха нет ни руки, ни лица, ни направления.", deviation: "Отрицание атрибутов ведет к отрицанию Самого Аллаха, так как Он описывает Себя в Коране. Отрицающий Его атрибуты отрицает Его Самого." },
+    { id: 11, badge: "Асма ва-Сыфат", title: "11. Запрет на Тамсиль (Уподобление)", desc: "Как избежать уподобления Творца творению?", correct: "Мы верим: «Нет никого подобного Ему, и Он — Слышащий, Видящий» (42:11). Мы не представляем атрибуты Аллаха в образах творений.", deviation: "Антропоморфисты (хашавия) уподобляют Аллаха творениям, говоря, что у Него руки и ноги как у нас. Это крайность, от которой мы очищены." },
+    { id: 12, badge: "Куфр и Иман", title: "12. Определение Имана", desc: "Из чего состоит Иман по мнению Ахлю Сунна?", correct: "Иман — это убеждение сердцем, произнесение языком и совершение действий телом. Он увеличивается от послушания и уменьшается от грехов.", deviation: "Муриджиты говорят, что Иман — это только сердце или язык, а действия не входят в него. Хариджиты же считают, что оставление действия полностью уничтожает Иман." },
+    { id: 13, badge: "Куфр и Иман", title: "13. Виды Куфра (Неверия)", desc: "Какие бывают виды куфра?", correct: "Большой куфр (выводит из Ислама) и малый куфр (не выводит, например, неблагодарность, оплакивание с биением). Большой куфр бывает в убеждениях, словах и действиях.", deviation: "Хариджиты называют малый куфр большим, а муриджиты вообще боятся называть явные действия куфром, чтобы не «осудить» человека." },
+    { id: 14, badge: "Нифак", title: "14. Виды Лицемерия (Нифак)", desc: "Чем отличается большое лицемерие от малого?", correct: "Большое — это несоответствие сердца словам (скрытый куфр). Малое — это несоответствие тайного явному в действиях (ложь, нарушение обещания).", deviation: "Суфии иногда считают, что «большое сердце» или духовные состояния (халь) прощают малое лицемерие в словах и обещаниях." },
+    { id: 15, badge: "Такфир", title: "15. Условия Такфира", desc: "Можно ли сразу объявить мусульманина кафиром?", correct: "Такфир конкретного человека требует соблюдения условий (шарт): знание, намерение, способность. И отсутствия препятствий (мани'): незнание, принуждение, ошибка в иджтихаде.", deviation: "Современные радикалы (гулат) делают массовый такфир без учета препятствий. А джахмиты-муриджиты не делают такфир даже за явное отрицание основ религии." },
+    { id: 16, badge: "Сахаба", title: "16. Отношение к Сподвижникам", desc: "Какова наша акыда относительно Сахаба?", correct: "Мы любим их, молимся за них, сдерживаем языки от их разногласий и верим, что они были самыми праведными после Пророка. Мы не проклинаем никого из них.", deviation: "Шиита (рафидиты) проклинают Сахаба, считают их вероотступниками (кроме нескольких). Хариджиты также проклинают их за согласие на суд людей." },
+    { id: 17, badge: "Пророчество", title: "17. Чудеса Пророков (Муъджиза)", desc: "Что такое Муъджиза и чем она отличается от магии?", correct: "Муъджиза — это сверхъестественное явление, данное Пророку Аллахом в подтверждение его правдивости. Она несоизмерима с магией и не может быть повторена.", deviation: "Муътазилиты и философы пытаются рационализировать чудеса, называя их «нарушением привычных причин», а не прямым действием Аллаха." },
+    { id: 18, badge: "Пророчество", title: "18. Печать Пророчества", desc: "Завершилась ли эпоха пророков?", correct: "Мухаммад, мир ему и благословение, — Печать пророков. После него не будет ни нового пророка, ни посланника. Это единогласное мнение уммы.", deviation: "Лжепророки (как Мусайлима, Мирза Гулам Ахмад) и крайние суфии (утверждающие, что «валий» может достичь уровня пророчества) отвергают этот догмат." },
+    { id: 19, badge: "Коран", title: "19. Речь Аллаха", desc: "Сотворен ли Коран?", correct: "Коран — это несотворенная Речь Аллаха, ниспосланная Им. Его атрибуты (включая Речь) несотворенны, как и Его Сущность.", deviation: "Джахмиты и муътазилиты утверждают, что Коран сотворен. Это одно из самых тяжких заблуждений, отрицающих вечный атрибут Аллаха." },
+    { id: 20, badge: "Коран", title: "20. Методология Тафсира", desc: "Как правильно толковать Коран?", correct: "1) Коран толкуется Кораном. 2) Сунной. 3) Словами Сахаба. 4) Словами Табиинов. 5) Языковыми нормами арабского. Без этого — opiniон (ра'й).", deviation: "Батиниты и крайние суфии ищут скрытые, эзотерические смыслы (батин), отвергая явный (захир) смысл, что ведет к полному искажению религии." },
+    { id: 21, badge: "Судный день", title: "21. Испытание в могиле", desc: "Верим ли мы в Фитна аль-Кабрь (испытание в могиле)?", correct: "Да, умерший будет спрошен об Аллахе, религии и Пророке. Верующий ответит твердо, а лицемер/неверующий скажет: «Не знаю».", deviation: "Муътазилиты, философы и современные рационалисты (включая некоторых ашаритов) отрицают испытание в могиле, называя его метафорой." },
+    { id: 22, badge: "Судный день", title: "22. Мизан (Весы)", desc: "Будут ли взвешиваться деяния?", correct: "В Судный День будут установлены реальные Весы (Мизан), на которых будут взвешиваться deeds. Тяжелые чаши с благими делами — спасение, легкие — гибель.", deviation: "Рационалисты и муътазилиты говорят, что «взвешивание» — это лишь метафора справедливости, отрицая физическое существование Весов." },
+    { id: 23, badge: "Судный день", title: "23. Сират (Мост над Адом)", desc: "Что такое Сират?", correct: "Это мост, проложенный над Адом. Все люди будут проходить по нему в зависимости от их деяний: кто как молния, кто как ветер, а некоторые упадут в Ад.", deviation: "Отрицание Сирата ведет к отрицанию деталей Судного Дня, что противоречие достоверным хадисам." },
+    { id: 24, badge: "Судный день", title: "24. Хауд (Водоём Пророка)", desc: "Что такое Водоём (Хауд)?", correct: "У каждого Пророка будет водоём. Наш водоём — это пруд аль-Каусар. Его вода белее молока, а сосуды — как звезды. Пить из него — значит больше не испытывать жажды.", deviation: "Некоторые современные секты отвергают водоём, а шииты считают, что Али и его потомки будут отгонять людей от водоёма Пророка." },
+    { id: 25, badge: "Судный день", title: "25. Шафа'а (Заступничество)", desc: "Какие виды заступничества существуют?", correct: "Большое заступничество (начало Суда), заступничество за вход в Рай, заступничество за грешников, чтобы они вышли из Ада. Все это только с позволения Аллаха.", deviation: "Кубуриты просят заступничества у мертвых («О Пророк, заступись за нас!»). Это ширк, так как заступничество будет только в Судный День и только с разрешения Аллаха." },
+    { id: 26, badge: "Судный день", title: "26. Видение Аллаха (Ар-Руья)", desc: "Увидят ли верующие Аллаха?", correct: "Да, верующие увидят Аллаха в Раю, как видят луну в полнолуние. Это величайшее блаженство. Он не окружен местом и не имеет направления.", deviation: "Муътазилиты, джахмиты и ашариты отрицают видение Аллаха глазами, говоря, что «видеть» означает лишь «надеяться» или «знать»." },
+    { id: 27, badge: "Рай и Ад", title: "27. Вечность Рая и Ада", desc: "Прекратится ли существование Рая и Ада?", correct: "Рай и Ад сотворены сейчас и будут существовать вечно. Пребывание верующих в Раю и неверующих в Аду бесконечно.", deviation: "Муътазилиты и некоторые заблудшие течения считают, что Ад прекратит свое существование или что грешники выйдут из него не по заступничеству, а по своей воле." },
+    { id: 28, badge: "Рай и Ад", title: "28. Грешники из уммы", desc: "Что будет с мусульманами, совершавшими большие грехи?", correct: "Их судьба в руках Аллаха: либо Он простит их по Своей милости, либо накажет в Аду временно, а затем введет в Рай благодаря Таухиду.", deviation: "Хариджиты считают их вечными обитателями Ада. Муътазилиты помещают их в «промежуточное положение», не в Рай и не в Ад." },
+    { id: 29, badge: "Кадр (Предопределение)", title: "29. Уровни Кадр", desc: "Из скольких уровней состоит вера в Предопределение?", correct: "Четыре уровня: 1) Аль-Ильм (Знание Аллаха). 2) Аль-Китаб (Запись в Ловх аль-Махфуз). 3) Аль-Машийа (Хотение Аллаха). 4) Аль-Хальк (Создание Аллахом всего сущего).", deviation: "Джабриты (фаталисты) отрицают волю человека, говоря, что он как перо в руке. Кадариты отрицают знание и волю Аллаха над поступками людей." },
+    { id: 30, badge: "Кадр (Предопределение)", title: "30. Свобода воли и Кадр", desc: "Как сочетаются свобода воли человека и Предопределение?", correct: "Человек обладает свободой воли и выбором (ихтияр), но его воля подчинена Воле Аллаха. Он совершает действия по своему желанию, но Аллах создал это действие.", deviation: "Джабриты лишают человека воли. Кадариты утверждают, что человек сам творит свои поступки независимо от Воли Аллаха." },
+    { id: 31, badge: "Кадр (Предопределение)", title: "31. Отношение к бедам", desc: "Как верующий относится к бедам?", correct: "Он проявляет Сабр (терпение) и Ридá (довольство предопределением), зная, что беда не случилась бы без дозволения Аллаха, и что в ней есть мудрость и очищение.", deviation: "Ропот на судьбу, проклинание времени или обвинение людей/врачей без принятия Кадр — это признак слабости имана и скрытого недовольства Аллахом." },
+    { id: 32, badge: "Невидимое (Гайб)", title: "32. Вера в Ангелов", desc: "Какова суть веры в Ангелов?", correct: "Мы верим в их существование из света, их точное подчинение Аллаху и их обязанности (Джибриль, Микаль, Исрафиль, Азраиль, Ангелы могил и т.д.).", deviation: "Философы и муътазилиты говорят, что ангелы — это просто «силы природы» или «законы Вселенной», отрицая их личностную сущность." },
+    { id: 33, badge: "Невидимое (Гайб)", title: "33. Джинны и их влияние", desc: "Реально ли влияние джиннов на людей?", correct: "Да, джинны реальны, они созданы из огня. Они могут видеть нас, а мы их — нет. Они могут вредить (посредством сглаза или одержимости), но только с позволения Аллаха.", deviation: "Материалисты и некоторые рационалисты-ашариты отрицают одержимость джиннами, называя ее психическими болезнями. Это противоречие Корану и Сунне." },
+    { id: 34, badge: "Невидимое (Гайб)", title: "34. Магия (Сихр)", desc: "Является ли магия реальностью?", correct: "Магия реальна, она существует и может влиять (например, разлучать супругов или вредить здоровью), но ее влияние ограничено Волей Аллаха. Обучение и практика магии — это куфр.", deviation: "Муътазилиты и некоторые современные «ученые» отрицают магию. Другие же (как суфии-амулетники) используют ее, маскируя под «духовные практики»." },
+    { id: 35, badge: "Рукия и Тибб", title: "35. Шариатская Рукия", desc: "Каковы условия дозволенной Рукии?", correct: "1) Слова Корана или имена/атрибуты Аллаха. 2) На понятном арабском языке (или с ясным смыслом). 3) Убеждение, что исцеляет только Аллах, а Рукия — лишь причина.", deviation: "Использование непонятных заклинаний, обращение к джиннам, использование талисманов с символами — это запретная Рукия, ведущая к ширку." },
+    { id: 36, badge: "Бид'а (Нововведения)", title: "36. Определение Бид'а", desc: "Что такое религиозное нововведение?", correct: "Бид'а — это выдуманное в религии нечто, чего не было у Пророка и его сподвижников, с целью приближения к Аллаху. Каждая бид'а — это заблуждение.", deviation: "Суфии и ашариты делят бид'а на «хорошие» и «плохие». Ахлю Сунна единогласны: в поклонении нет «хороших» нововведений, все они ведут в Ад." },
+    { id: 37, badge: "Бид'а (Нововведения)", title: "37. Опасность Бид'а", desc: "Почему бид'а хуже, чем большие грехи?", correct: "Бид'а разрушает религию изнутри, человек считает грех поклонением. Раскаяние от бид'а требует оставления самого нововведения и призыва других к Сунне.", deviation: "Муриджиты и суфии считают, что «чистое сердце» или «любовь к Пророку» компенсируют следование бид'а. Это опаснейшее заблуждение." },
+    { id: 38, badge: "Валийя (Друзья Аллаха)", title: "38. Признаки Валиев (Праведников)", desc: "Кто такие истинные Валии Аллаха?", correct: "Это люди, обладающие глубоким иманом и строго следующие Сунне. Их главный признак — соблюдение Шариата, а не полеты или хождение по воде.", deviation: "Крайние суфии считают, что Валий стоит выше Пророков и что Шариат для них отменен (вадифа). Это явный куфр." },
+    { id: 39, badge: "Валийя (Друзья Аллаха)", title: "39. Чудеса Валиев (Карамат)", desc: "Допускаются ли чудеса у праведников?", correct: "Да, Карамат реален и дается праведнику как подтверждение его праведности. Но это всегда происходит по Воле Аллаха и в рамках Шариата, без вызова к себе.", deviation: "Суфии приписывают своим шейхам чудеса, которые противоречат Шариату (например, оставление намаза). Истинное чудо не противоречит Сунне." },
+    { id: 40, badge: "Такфир и Методология", title: "40. Отношение к грешникам", desc: "Как мы относимся к мусульманину, совершившему большой грех?", correct: "Он остается мусульманином, если не считает грех халялем. Мы не лишаем его имана полностью, но говорим, что его иман ослаб. Мы не проклинаем его персонально.", deviation: "Хариджиты объявляют его кафиром. Муриджиты говорят, что грех вообще не вредит иману. Ахлю Сунна — посередине." },
+    { id: 41, badge: "Такфир и Методология", title: "41. Вера и слова «ИншаАллах»", desc: "Говорим ли мы «я — верующий» без оговорки?", correct: "Мы говорим: «Я верующий, если пожелает Аллах» (иншаАллах). Мы не гарантируем себе Рай, так как не знаем, чем закончится наша жизнь.", deviation: "Муриджиты и крайние суфии говорят «я — 100% верующий и житель Рая», проявляя самоуверенность и отсутствие страха перед Аллахом." },
+    { id: 42, badge: "Судный день", title: "42. Признаки Часа", desc: "Верим ли мы в малые и большие признаки Часа?", correct: "Да, мы верим во все, что пришло в достоверных хадисах: от появления лжепророков до выхода Даджаля, Исы (мир ему), Яджуджа и Маджуджа, и солнца с запада.", deviation: "Рационалисты (муътазилиты, ашариты, философы) аллегоризируют большие признаки, говоря, что Даджаль — это «система», а Яджудж — это «микробы»." },
+    { id: 43, badge: "Пророчество", title: "43. Вознесение Пророка (Исра и Мирадж)", desc: "Было ли ночное путешествие Пророка телом и душой?", correct: "Да, Пророк был перенесен из Мекки в Иерусалим, а затем вознесен на небеса и к Сидрат аль-Мунтаха телом и душой, наяву, а не во сне.", deviation: "Муътазилиты и некоторые философы утверждают, что это был лишь сон или духовное путешествие, отрицая физическое вознесение." },
+    { id: 44, badge: "Таухид аль-Улюхийя", title: "44. Запрет на Тауассуль через мертвых", desc: "Можно ли просить у мертвого Пророка?", correct: "Категорически нет. Обращение с мольбой (дуа) к мертвым, даже к Пророкам и праведникам — это большой ширк. Мертвые не слышат наших просьб и не могут ответить.", deviation: "Кубуриты и многие суфии взывают: «Я Расуляллах, агисна!» (О Посланник, помоги!). Это выводит из Ислама, так как ддуа — это суть поклонения." },
+    { id: 45, badge: "Таухид аль-Улюхийя", title: "45. Разрешенный Тауассуль", desc: "Какие виды посредничества дозволены?", correct: "1) Через имена и атрибуты Аллаха. 2) Через праведные deeds. 3) Через дуа живого праведника. 4) Через личность Пророка (в некоторых мнениях, но лучше через его статус).", deviation: "Ашариты разрешают тауассуль «правом» или «личностью» Пророка (би-джахи), что ведет к преувеличению и ширку в отношении мертвых." },
+    { id: 46, badge: "Судный день", title: "46. Хадж (Паломничество) и его суть", desc: "Является ли Хадж столпом Ислама?", correct: "Да, Хадж — это пятый столп Ислама, обязательный раз в жизни для тех, кто имеет возможность. Его отвержение — это куфр.", deviation: "Бабиниты и карматы в истории отвергали обязательность Хаджа, считая, что «истинный Хадж» — это посещение своего имама или духовное очищение." },
+    { id: 47, badge: "Такфир и Методология", title: "47. Отношение к Правителям", desc: "Какова наша акыда в отношении мусульманских правителей?", correct: "Мы подчиняемся им в том, что не противоречит Шариату, даже если они несправедливы. Мы не восстаем против них, если видим явный куфр, и не делаем им такфир за грехи.", deviation: "Хариджиты и современные радикалы (кутбисты) объявляют правителей кафирами за суд не по Шариату и призывают к джихаду против них. Ахлю Сунна запрещает это." },
+    { id: 48, badge: "Бид'а (Нововведения)", title: "48. Празднование Мавлида", desc: "Каково постановление празднования дня рождения Пророка?", correct: "Это бид'а (нововведение), которого не было у Сахаба. Несмотря на любовь к Пророку, мы не можем вводить в религию то, чего не делали лучшие поколения.", deviation: "Ашариты и суфии считают Мавлид «хорошим нововведением» и обязательным проявлением любви. Это противоречит принципу «каждое бид'а — заблуждение»." },
+    { id: 49, badge: "Невидимое (Гайб)", title: "49. Вера в предыдущие Писания", desc: "Как мы относимся к Торе и Евангелию?", correct: "Мы верим, что они были ниспосланы Аллахом. Но мы не читаем их, не подтверждаем их и не отрицаем. Мы верим только в то, что Коран подтвердил или опроверг.", deviation: "Иудаисты и христиане искажают их. А некоторые современные «диалогисты» считают, что все книги одинаково верны, что противоречит концепции Таухида." },
+    { id: 50, badge: "Таухид аль-Улюхийя", title: "50. Истина и Заблуждение", desc: "Существует ли «множество истинных путей»?", correct: "Истина одна — это Коран и Сунна в понимании Сахаба. Все, что противоречит этому — заблуждение. Религия не делится на «школы», которые одинаково верны.", deviation: "Суфии и философы говорят: «Все пути ведут к Аллаху», уравнивая Сунну, бид'а и даже другие религии. Это явное противоречие аяту: «Истинная религия у Аллаха — Ислам»." }
+];
 
-    function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
-    }
+// Generate Cards
+const grid = document.getElementById('questionsGrid');
+questionsData.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.onclick = () => openModal(q);
+    card.innerHTML = `
+        <span class="badge">${q.badge}</span>
+        <h3>${q.title}</h3>
+        <p>${q.desc}</p>
+    `;
+    grid.appendChild(card);
+});
 
-    window.onclick = function(event) {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+// Modal Logic
+function openModal(q) {
+    document.getElementById('modalTitle').innerText = q.title;
+    document.getElementById('modalCorrect').innerText = q.correct;
+    document.getElementById('modalDeviation').innerText = q.deviation;
+    document.getElementById('mainModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('mainModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('mainModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
     }
+}
 </script>
 
 </body>
