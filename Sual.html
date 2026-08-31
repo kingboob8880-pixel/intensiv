@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка Акыды - Фундаментальные вопросы</title>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --secondary: #2d6a4f;
+            --accent: #d4af37;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #212529;
+            --text-light: #6c757d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        header h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            border-left-color: var(--accent);
+        }
+
+        .question-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .question-card p {
+            color: var(--text-light);
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border-top: 5px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
+        .modal-content h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .answer-section {
+            margin-top: 20px;
+        }
+
+        .answer-section h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .correct-answer {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .deviation-answer {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Фундаментальные вопросы Акыды</h1>
+        <p>«Основа религии — чистое убеждение. Проверяй не только слова, но и суть».</p>
+    </header>
+
+    <div class="question-grid">
+        <!-- Question 1 -->
+        <div class="question-card" onclick="openModal('modal1')">
+            <span class="badge">Таухид аль-Асма ва-Сыфат</span>
+            <h3>1. Атрибуты Аллаха и принцип «Била кайф»</h3>
+            <p>Как мы понимаем атрибуты Аллаха (Рука, Лицо, Возвышение над Троном) и чем наш подход отличается от других?</p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card" onclick="openModal('modal2')">
+            <span class="badge">Иман (Вера)</span>
+            <h3>2. Определение Имана и его изменения</h3>
+            <p>Из чего состоит Иман? Увеличивается ли он и уменьшается? Отделяются ли действия от веры?</p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-card" onclick="openModal('modal3')">
+            <span class="badge">Такфир и Хариджиты</span>
+            <h3>3. Методология Такфира (обвинения в куфре)</h3>
+            <p>Можно ли объявлять конкретного мусульманина неверующим за совершение большого греха? В чем разница между Ахлю Сунна и хариджитами?</p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-card" onclick="openModal('modal4')">
+            <span class="badge">Таухид аль-Улюхийя</span>
+            <h3>4. Тауассуль и обращение к мертвым</h3>
+            <p>Какие виды Тауассуля (посредничества) разрешены в Шариате, а какие являются явным ширком?</p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-card" onclick="openModal('modal5')">
+            <span class="badge">Коран</span>
+            <h3>5. Речь Аллаха: сотворенность Корана</h3>
+            <p>Является ли Коран речью Аллаха? Сотворен ли он? Как отличить правильный ответ от ответа муътазилитов и джахмитов?</p>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-card" onclick="openModal('modal6')">
+            <span class="badge">Судный день</span>
+            <h3>6. Видение Аллаха (Ар-Руья)</h3>
+            <p>Будут ли верующие видеть Аллаха в Судный День? Как это понимают Ахлю Сунна и как это отрицают муътазилиты?</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Да наставит Аллах на прямой путь и дарует праведного супруга. Амин.</p>
+    </footer>
+</div>
+
+<!-- MODALS -->
+
+<!-- Modal 1 -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+        <h2>1. Атрибуты Аллаха (Асма ва-Сыфат)</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Мы утверждаем за Аллахом все атрибуты, которыми Он описал Себя в Коране и в Сунне. Мы понимаем их в соответствии с Величием Аллаха, <b>без искажения (тахриф), без отрицания (та'тыль), без уточнения «как» (такйиф) и без уподобления творениям (тамсиль)</b>. Мы говорим: «Рука Аллаха есть, но не такая, как у творений», «Он возвысился над Троном, но мы не знаем, как именно, и не спрашиваем об этом».
+            </div>
+            <h4>❌ Ошибки других течений (на что обратить внимание):</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Муътазилиты и Джахмиты:</b> Полностью отрицают атрибуты Аллаха, говоря, что Он не обладает ни слухом, ни зрением, ни рукой, чтобы не уподобляться творениям.</li>
+                    <li><b>Ашариты и Матуридиты:</b> Искажают смысл атрибутов (тахвиль). Например, говорят, что «Рука» означает «Сила», «Лицо» — «Сущность», а «Возвышение над Троном» — «Победа и Господство». Это ошибка, так как они занимаются толкованием (та'виль) без доказательства.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+        <h2>2. Определение Имана</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Иман — это <b>убеждение сердцем, произнесение языком и совершение действий телом</b>. Он <b>увеличивается</b> при совершении послушания (та'а) и <b>уменьшается</b> при совершении грехов (ма'сия). Действия являются неотъемлемой частью Имана, а не просто его следствием.
+            </div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Муриджиты:</b> Говорят, что Иман — это только убеждение в сердце (или только слова языком), а действия не входят в Иман. Они также утверждают, что Иман не увеличивается и не уменьшается. (Это опасное течение, которое оправдывает грешников, называя их «полноценными верующими»).</li>
+                    <li><b>Хариджиты:</b> Наоборот, считают, что оставление действия полностью выводит человека из Имана.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+        <h2>3. Методология Такфира</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Мы не объявляем конкретного мусульманина неверующим (кафиром) за совершение греха, даже большого, если он не считает этот грех халялем (разрешенным). Такфир конкретного человека требует соблюдения условий (шарт) и отсутствия препятствий (мани'), таких как незнание, принуждение или ошибка в иджтихаде. Мы молимся за умерших мусульман, даже если они были грешниками.
+            </div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Хариджиты:</b> Объявляют мусульманин неверующим за совершение большого греха и считают, что он вечно будет в Аду.</li>
+                    <li><b>Современные радикальные группировки (гулат):</b> Делают массовый такфир (обвиняют в куфре целые общества и правителей) без разбора условий и препятствий, что приводит к хаосу и пролитию крови.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4 -->
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
+        <h2>4. Тауассуль и обращение к мертвым</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Разрешенные виды Тауассуля: 1) Аллахом и Его именами/атрибутами. 2) Своими праведными делами (например: «О Аллах, если я делал это ради Тебя, то облегчи мне»). 3) Дуа живого праведного человека (попросить его помолиться за тебя). <b>Обращаться к мертвым, пророкам или праведникам с просьбой о помощи, исцелении или даровании детей — это явный ширк (многобожие).</b>
+            </div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Кубуриты (поклоняющиеся могилам) и крайние суфии:</b> Считают, что можно взывать к мертвым пророкам или святым («О Пророк, помоги!», «О Абдуль-Кадир, даруй!»). Это выводит из Ислама.</li>
+                    <li><b>Ашариты (некоторые):</b> Позволяют тауассуль «личностью» или «правом» Пророка (би-джахи), что является нововведением (бид'а), ведущим к ширку.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 5 -->
+<div id="modal5" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal5')">&times;</span>
+        <h2>5. Речь Аллаха (Коран)</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Коран — это несотворенная Речь Аллаха. Он ниспослан (танзиль), а не создан. Мы различаем: сама Речь Аллаха (Его атрибут) несотворенна, а наши голоса, буквы, чернила и бумага, которыми мы записываем Коран — сотворены. Кто скажет, что Коран сотворен, тот кафир.
+            </div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Муътазилиты и Джахмиты:</b> Утверждают, что Коран сотворен. Это одно из самых опасных заблуждений, так как оно отрицает вечный атрибут Аллаха (Речь).</li>
+                    <li><b>Курабиты (асхад аль-Куран):</b> Говорят, что Коран — это сам Аллах (уподобление Творца творению).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 6 -->
+<div id="modal6" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('modal6')">&times;</span>
+        <h2>6. Видение Аллаха (Ар-Руья)</h2>
+        <div class="answer-section">
+            <h4>✅ Как должен ответить (Ахлю Сунна):</h4>
+            <div class="correct-answer">
+                Верующие будут видеть Аллаха в Судный День в Рай, и это будет величайшим блаженством. Мы видим Его, но Он не окружен местом, не имеет направления, и наше зрение не объемлет Его, хотя Он объемлет наше зрение. Это подтверждается хадисом: «Вы, несомненно, увидите вашего Господа, как видите луну в ночь полнолуния».
+            </div>
+            <h4>❌ Ошибки других течений:</h4>
+            <div class="deviation-answer">
+                <ul>
+                    <li><b>Муътазилиты, Джахмиты и Ашариты:</b> Отрицают видение Аллаха глазами в Раю. Они говорят, что «видеть» означает «надеяться» или «знать», либо что Аллах не может быть увиден, так как Он не тело и не направление. Это явное противоречие Корану и Сунне.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
